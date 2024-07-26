@@ -6,25 +6,39 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class AuthorService {
   constructor(
-    @InjectRepository(Author) private authorRepository: Repository<Author>,
+    @InjectRepository(Author)
+    private authorRepository: Repository<Author>,
   ) {}
 
-  async getAuthors(): Promise<Author[]> {
+  async getAllAuthors(): Promise<Author[]> {
     return await this.authorRepository.find();
   }
 
-  async getAuthor(id: number): Promise<Author[]> {
+  async getAuthorById(id: number): Promise<Author[]> {
     return await this.authorRepository.find({
-      select: ['firstname', 'lastname', 'birthdate'],
+      select: ['id', 'firstname', 'lastname', 'birthdate'],
       where: [{ id: id }],
     });
   }
 
-  saveAuthor(author: Author): Promise<Author> {
+  addAuthor(author: Author): Promise<Author> {
     return this.authorRepository.save(author);
   }
 
-  deleteAuthor(author: Author): void {
-    this.authorRepository.delete(author);
+  async modifyAuthorFirstnameById(id: number, firstname: string) {
+    await this.authorRepository
+      .createQueryBuilder()
+      .update(Author)
+      .set({ firstname: firstname })
+      .where('id = :id', { id: id })
+      .execute();
+    return await this.authorRepository.find({
+      select: ['id', 'firstname', 'lastname', 'birthdate'],
+      where: [{ id: id }],
+    });
+  }
+
+  deleteAuthor(id: number): void {
+    this.authorRepository.delete(id);
   }
 }

@@ -1,0 +1,33 @@
+entity: Author
+items:
+  author1:
+    firstname: 'William'
+    lastname: 'Shakespeare'
+    genres:
+      - '@genre1'
+  author2:
+    firstname: 'Victor'
+    lastname: 'Hugo'
+    birthdate: '1802, 2, 26'
+    genres:
+      - '@genre1'
+      - '@genre2'
+      - '@genre3'
+  author3:
+    firstname: 'Roald'
+    lastname: 'Dahl'
+    birthdate: '1916, 9, 13'
+    genres:
+      - '@genre5'
+  author4:
+    firstname: 'Émile'
+    lastname: 'Zola'
+    birthdate: '1840, 4, 2'
+    genres:
+      - '@genre2'
+  author5:
+    firstname: 'Agatha'
+    lastname: 'Christie'
+    birthdate: '1890, 9, 15'
+    genres:
+      - '@genre4'

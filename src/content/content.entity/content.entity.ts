@@ -1,11 +1,5 @@
 import { Book } from '../../book/book.entity/book.entity';
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  OneToOne,
-  JoinColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
 
 @Entity()
 export class Content {
@@ -14,6 +8,5 @@ export class Content {
   @Column({ type: 'text' })
   text: string;
   @OneToOne(() => Book, (book) => book.content)
-  @JoinColumn()
   book: Book;
 }

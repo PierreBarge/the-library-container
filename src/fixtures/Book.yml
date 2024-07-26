@@ -1,0 +1,72 @@
+entity: Book
+items:
+  book1:
+    title: 'Hamlet'
+    author: '@author1'
+    content: '@content($current)'
+    genre: '@genre1'
+  book2:
+    title: 'McBeth'
+    author: '@author1'
+    content: '@content($current)'
+    genre: '@genre1'
+  book3:
+    title: 'Othello'
+    author: '@author1'
+    content: '@content($current)'
+    genre: '@genre1'
+  book4:
+    title: 'King Lear'
+    author: '@author1'
+    content: '@content($current)'
+    genre: '@genre1'
+  book5:
+    title: 'Notre-Dame de Paris'
+    author: '@author2'
+    content: '@content($current)'
+    genre: '@genre2'
+  book6:
+    title: 'Les Misérables'
+    author: '@author2'
+    content: '@content($current)'
+    genre: '@genre2'
+  book7:
+    title: 'Les Contemplations'
+    author: '@author2'
+    content: '@content($current)'
+    genre: '@genre3'
+  book8:
+    title: 'Hernani'
+    author: '@author2'
+    content: '@content($current)'
+    genre: '@genre1'
+  book9:
+    title: 'Charlie and the Chocolate Factory'
+    author: '@author3'
+    content: '@content($current)'
+    genre: '@genre5'
+  book10:
+    title: 'James and the Giant Peach'
+    author: '@author3'
+    content: '@content($current)'
+    genre: '@genre5'
+  book11:
+    title: 'Germinal'
+    author: '@author4'
+    content: '@content($current)'
+    genre: '@genre2'
+  book12:
+    title: 'La Curée'
+    author: '@author4'
+    content: '@content($current)'
+    genre: '@genre2'
+  book13:
+    title: 'And Then There Were None'
+    author: '@author5'
+    content: '@content($current)'
+    genre: '@genre4'
+  book14:
+    title: 'Murder on the Orient Express'
+    author: '@author5'
+    content: '@content($current)'
+    genre: '@genre4'

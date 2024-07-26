@@ -21,7 +21,10 @@
     "migration:create": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:create",
     "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d src/config/migration.config.ts",
     "migration:up": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -d src/config/migration.config.ts",
-    "migration:down": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert -d src/config/migration.config.ts"
+    "migration:down": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert -d src/config/migration.config.ts",
+    "fixtures": "fixtures-ts-node-commonjs load ./src/fixtures --dataSource=./src/config/fixtures.config.ts",
+    "schema:drop": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm schema:drop -d ./src/config/fixtures.config.ts",
+    "resetdb": "npm run schema:drop && npm run migration:up && npm run fixtures"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -54,8 +57,9 @@
     "supertest": "^7.0.0",
     "ts-jest": "^29.1.0",
     "ts-loader": "^9.4.3",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
+    "typeorm-fixtures-cli": "^4.0.0",
     "typescript": "^5.1.3"
   },
   "jest": {

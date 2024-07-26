@@ -1,0 +1,12 @@
+entity: Genre
+items:
+  genre1:
+    name: 'Tragedy'
+  genre2:
+    name: 'Novels'
+  genre3:
+    name: 'Poetry'
+  genre4:
+    name: 'Detective'
+  genre5:
+    name: 'Youth'
