@@ -18,12 +18,13 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migration:create": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:create",
-    "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d src/config/migration.config.ts",
-    "migration:up": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -d src/config/migration.config.ts",
-    "migration:down": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert -d src/config/migration.config.ts",
+    "migration:create": "npm run typeorm migration:create",
+    "migration:generate": "npm run typeorm migration:generate -- -d src/config/migration.config.ts",
+    "migration:up": "npm run typeorm migration:run -- -d src/config/migration.config.ts",
+    "migration:down": "npm run typeorm migration:revert -- -d src/config/migration.config.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
     "fixtures": "fixtures-ts-node-commonjs load ./src/fixtures --dataSource=./src/config/fixtures.config.ts",
-    "schema:drop": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm schema:drop -d ./src/config/fixtures.config.ts",
+    "schema:drop": "npm run typeorm schema:drop -- -d ./src/config/fixtures.config.ts",
     "resetdb": "npm run schema:drop && npm run migration:up && npm run fixtures"
   },
   "dependencies": {
