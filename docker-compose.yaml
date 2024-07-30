@@ -1,13 +1,41 @@
 services:
+  web-api:
+    depends_on:
+      - database
+    container_name: web_api_library_container
+    build: .
+    environment:
+      DATABASE_HOST: database
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_DB: ${DATABASE_DB}
+    restart: unless-stopped
+    volumes:
+      - .:/web-api
+    ports:
+      - '3000:3000'
+    networks:
+      - backend
+      - database
+
   database:
-    container_name: postgres_library_container
+    container_name: database_library_container
     image: postgres
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       PGDATA: /data/postgres
     volumes:
-      - ./postgres:/data/postgres
+      - postgres:/data/postgres
     ports:
       - '${DATABASE_PORT}:5432'
     restart: unless-stopped
+    networks:
+      - database
+
+networks:
+  database:
+  backend:
+volumes:
+  postgres:
