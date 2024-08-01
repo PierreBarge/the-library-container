@@ -8,3 +8,7 @@
   height: 250%;
   transform: translate(0, -20%);
 }
+
+.cancel-button {
+  margin-top: 2rem;
+}
