@@ -1,35 +1,88 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+import Button from "./components/Button";
+import Displayer from "./components/Displayer";
+import Modal from "./components/Modal";
 
-function App() {
-  const [count, setCount] = useState(0)
+const buttonList = ["Authors", "Genres", "Books"];
+
+export default function App() {
+  const [buttonPressed, setButtonPressed] = useState("None");
+  const [fetchedData, setFetchedData] = useState(null);
+
+  useEffect(() => {
+    switch (buttonPressed) {
+      case "Authors": {
+        fetch(`http://localhost:3000/author`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Something went wrong");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            setFetchedData(() => data);
+            console.log("Fetch done!!");
+          });
+        return;
+      }
+      case "Genres": {
+        fetch(`http://localhost:3000/genre`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Something went wrong");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            setFetchedData(() => data);
+            console.log("Fetch done!!");
+          });
+        return;
+      }
+      case "Books": {
+        fetch(`http://localhost:3000/book/detailed`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Something went wrong");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            setFetchedData(() => data);
+            console.log("Fetch done!!");
+          });
+        return;
+      }
+      default:
+        setFetchedData(() => null);
+        return;
+    }
+  }, [buttonPressed]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="app">
+      <h1>Welcome to The All Mighty Book Nest!!</h1>
 
-export default App
+      <div>
+        <button onClick={() => setButtonPressed(() => "Post")}>
+          Add an Author
+        </button>
+      </div>
+      <div>
+        {buttonList.map((button, index) => (
+          <Button
+            key={index}
+            setButtonPressed={setButtonPressed}
+            value={button}
+          />
+        ))}
+
+        {fetchedData && <Displayer data={fetchedData} />}
+      </div>
+      {buttonPressed === "Post" && (
+        <Modal setButtonPressed={setButtonPressed} />
+      )}
+    </div>
+  );
+}

@@ -14,6 +14,14 @@ export class BookService {
     return await this.bookRepository.find();
   }
 
+  async getDetailedBooks() {
+    return await this.bookRepository
+      .createQueryBuilder('book')
+      .leftJoinAndSelect('book.author', 'author')
+      .leftJoinAndSelect('book.genre', 'genre')
+      .getMany();
+  }
+
   async getBookById(id: number): Promise<Book[]> {
     return await this.bookRepository.find({
       select: ['id', 'title'],
