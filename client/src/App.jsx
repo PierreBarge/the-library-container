@@ -21,7 +21,7 @@ export default function App() {
             return response.json();
           })
           .then((data) => {
-            setFetchedData(() => data);
+            setFetchedData(data);
             console.log("Fetch done!!");
           });
         return;
@@ -35,7 +35,7 @@ export default function App() {
             return response.json();
           })
           .then((data) => {
-            setFetchedData(() => data);
+            setFetchedData(data);
             console.log("Fetch done!!");
           });
         return;
@@ -49,7 +49,7 @@ export default function App() {
             return response.json();
           })
           .then((data) => {
-            setFetchedData(() => data);
+            setFetchedData(data);
             console.log("Fetch done!!");
           });
         return;
@@ -65,9 +65,7 @@ export default function App() {
       <h1>Welcome to The All Mighty Book Nest!!</h1>
 
       <div>
-        <button onClick={() => setButtonPressed(() => "Post")}>
-          Add an Author
-        </button>
+        <button onClick={() => setButtonPressed("Post")}>Add an Author</button>
       </div>
       <div>
         {buttonList.map((button, index) => (
