@@ -3,21 +3,20 @@ import "./Modal.css";
 import { useState } from "react";
 
 export default function Modal({ setButtonPressed }) {
-  const [author, setAuthor] = useState({
-    firstname: "",
-    lastname: "",
-    birthdate: "",
-  });
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [birthdate, setBirthdate] = useState("");
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const body = {
-      ...author,
+    let body = {
+      firstname: firstname,
+      lastname: lastname,
     };
 
-    if (body.birthdate === "") {
-      body.birthdate = null;
+    if (birthdate !== "") {
+      body = { ...body, birthdate: birthdate };
     }
 
     try {
@@ -33,7 +32,7 @@ export default function Modal({ setButtonPressed }) {
       if (response.ok) {
         const result = await response.json();
         console.log("Author added: ", result);
-        setButtonPressed(() => "None");
+        setButtonPressed("None");
       } else {
         console.error("Something went wrong");
       }
@@ -52,12 +51,8 @@ export default function Modal({ setButtonPressed }) {
           <input
             type="text"
             required
-            value={author.firstname}
-            onChange={(e) =>
-              setAuthor((data) => {
-                return { ...data, firstname: e.target.value };
-              })
-            }
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
           />
         </div>
         <div>
@@ -65,32 +60,23 @@ export default function Modal({ setButtonPressed }) {
           <input
             type="text"
             required
-            value={author.lastname}
-            onChange={(e) =>
-              setAuthor((data) => {
-                return { ...data, lastname: e.target.value };
-              })
-            }
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
           />
         </div>
         <div>
           <label>Author&apos;s birthdate: </label>
           <input
             type="date"
-            value={author.birthdate}
-            onChange={(e) =>
-              setAuthor((data) => {
-                return { ...data, birthdate: e.target.value };
-              })
-            }
+            value={birthdate}
+            onChange={(e) => setBirthdate(e.target.value)}
           />
         </div>
         <input type="submit" value="Submit" />
       </form>
       <button
         className="cancel-button"
-        onClick={() => setButtonPressed(() => "None")}
-      >
+        onClick={() => setButtonPressed("None")}>
         Cancel
       </button>
     </div>
