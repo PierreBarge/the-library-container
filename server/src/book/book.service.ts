@@ -19,6 +19,7 @@ export class BookService {
       .createQueryBuilder('book')
       .leftJoinAndSelect('book.author', 'author')
       .leftJoinAndSelect('book.genre', 'genre')
+      .leftJoinAndSelect('book.sequels', 'sequels')
       .getMany();
   }
 

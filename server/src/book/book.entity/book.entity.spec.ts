@@ -1,7 +1,7 @@
-import { BookEntity } from './book.entity';
+import { Book } from './book.entity';
 
 describe('BookEntity', () => {
   it('should be defined', () => {
-    expect(new BookEntity()).toBeDefined();
+    expect(new Book()).toBeDefined();
   });
 });

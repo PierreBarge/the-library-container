@@ -6,6 +6,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -23,4 +24,8 @@ export class Book {
   author: Author;
   @ManyToOne(() => Genre, (genre) => genre.books)
   genre: Genre;
+  @ManyToOne(() => Book, (book) => book.sequels)
+  isSequelOf: Book;
+  @OneToMany(() => Book, (book) => book.isSequelOf)
+  sequels: Book[];
 }

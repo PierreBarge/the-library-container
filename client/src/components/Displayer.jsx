@@ -20,6 +20,14 @@ export default function Displayer({ data }) {
           )}
           {item.genre && item.genre.name && <p>Genre: {item.genre.name}</p>}
           {item.name && <p>{item.name}</p>}
+          {item.sequels && item.sequels[0] && (
+            <div>
+              Sequels:
+              {item.sequels.map((sequel) => (
+                <p key={sequel.id}>{sequel.title}</p>
+              ))}
+            </div>
+          )}
         </div>
       ))}
     </>
@@ -37,6 +45,7 @@ Displayer.propTypes = {
       name: PropTypes.string,
       author: PropTypes.shape(),
       genre: PropTypes.shape(),
+      sequels: PropTypes.array,
     })
   ).isRequired,
 };

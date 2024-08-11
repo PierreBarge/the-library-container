@@ -10,16 +10,19 @@ items:
     author: '@author1'
     content: '@content($current)'
     genre: '@genre1'
+    isSequelOf: '@book1'
   book3:
     title: 'Othello'
     author: '@author1'
     content: '@content($current)'
     genre: '@genre1'
+    isSequelOf: '@book1'
   book4:
     title: 'King Lear'
     author: '@author1'
     content: '@content($current)'
     genre: '@genre1'
+    isSequelOf: '@book1'
   book5:
     title: 'Notre-Dame de Paris'
     author: '@author2'
