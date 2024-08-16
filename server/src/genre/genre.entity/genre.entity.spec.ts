@@ -1,7 +1,7 @@
-import { GenreEntity } from './genre.entity';
+import { Genre } from './genre.entity';
 
 describe('GenreEntity', () => {
   it('should be defined', () => {
-    expect(new GenreEntity()).toBeDefined();
+    expect(new Genre()).toBeDefined();
   });
 });

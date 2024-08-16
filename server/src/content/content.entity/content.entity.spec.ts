@@ -1,7 +1,7 @@
-import { ContentEntity } from './content.entity';
+import { Content } from './content.entity';
 
 describe('ContentEntity', () => {
   it('should be defined', () => {
-    expect(new ContentEntity()).toBeDefined();
+    expect(new Content()).toBeDefined();
   });
 });

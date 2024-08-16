@@ -1,7 +1,7 @@
-import { AuthorEntity } from './author.entity';
+import { Author } from './author.entity';
 
 describe('AuthorEntity', () => {
   it('should be defined', () => {
-    expect(new AuthorEntity()).toBeDefined();
+    expect(new Author()).toBeDefined();
   });
 });
